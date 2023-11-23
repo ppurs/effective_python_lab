@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block page-content %}
+    {% if object %}
+    <h2 class="title">Update note's content</h2>
+    {% else %}
+    <h2 class="title">Create new note</h2>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+{% endblock %}

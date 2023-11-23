@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+{% block page-content %}
+    <h2 class="title">
+        {{ topic.title }}
+        <div class="action-bar">
+            <a class="btn" href="{% url 'add-topic-note' topic.slug %}" id="action-icon">Add note</a>
+            <a class="btn" href="{% url 'topic-update' topic.slug %}" id="action-icon">Update</a>
+            <a class="btn" href="{% url 'topic-delete' topic.slug %}" id="action-icon">Delete</a>
+        </div>
+    </h2>
+    
+    <ul>
+    {% for note in topic.note_set.all %}
+        <li>
+            <a href="{% url 'note-detail' note.pk %}">{{ note.title }}</a>
+        </li>
+    {% empty %}
+        No notes yet.
+    {% endfor %}
+    </ul>
+
+    <div class="footer">
+        <p class="footer-p">Created by: {{ topic.created_by }}, {{ topic.created }}</p>
+        <p class="footer-p">Modified: {{ topic.modified }}</p>
+    </div>
+{% endblock %}

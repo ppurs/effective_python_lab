@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% block page-content %}
+    <h2 class="title">
+        {{ note.title }}
+        <div class="action-bar">
+            <a class="btn" href="{% url 'note-update' note.pk %}" id="action-icon">Update</a>
+            <a class="btn" href="{% url 'note-delete' note.pk %}" id="action-icon">Delete</a>
+        </div>
+    </h2>
+    <div class="detail-body">{{ note.body }}</div>
+    <div class="footer">
+        <p class="footer-p">Created by: {{ note.created_by }}, {{ note.created }}</p>
+        <p class="footer-p">Modified: {{ note.modified }}</p>
+    </div>
+{% endblock %}

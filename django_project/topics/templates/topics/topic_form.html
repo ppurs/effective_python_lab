@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block page-content %}
+    {% if object %}
+    <h2 class="title">Update topic's content</h2>
+    {% else %}
+    <h2 class="title">Create new topic</h2>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+{% endblock %}

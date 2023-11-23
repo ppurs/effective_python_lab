@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+{% block page-content %}
+    {% load mptt_tags %}
+    <h2 class="title" href="">
+        Topics
+        <a class="btn" id="add-btn" href="{% url 'topic-add' %}">+</a>
+    </h2>
+
+    <ul>
+        {% if object_list %}
+            {% recursetree object_list %}
+                {% if node.public or not node.public and user.get_username == node.created_by.get_username %}
+                <li>
+                    <a href="{% url 'topic-detail' node.slug %}">{{ node.title }}</a>
+                    {% if not node.is_leaf_node %}
+                        <ul class="children">
+                            {{ children }}
+                        </ul>
+                    {% endif %}
+                </li>
+                {% endif %}
+            {% endrecursetree %}
+        {% else %}
+            No notes yet.
+        {% endif %}
+    </ul>
+{% endblock %}
