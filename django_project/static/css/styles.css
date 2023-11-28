@@ -17,7 +17,6 @@
   margin-left: 3rem;
 }
 
-
 .action-bar {
   position: fixed;
   right: 10%;
@@ -94,6 +93,11 @@
   line-height: 0.15rem;
   vertical-align: middle;
   width: 6rem;
+}
+
+#login-btn {
+  position: fixed;
+  bottom: 0;
 }
 
 #page-content {

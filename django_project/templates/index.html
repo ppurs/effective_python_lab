@@ -19,6 +19,13 @@
                 <div class="sidebar-item">
                     <a id="side-a" href="{% url 'topic-list' %}">Topics</a>
                 </div>
+                <div class="sidebar-item" id="login-btn">
+                    {% if user.is_authenticated %}
+                        <a id="side-a" href="/accounts/logout">Log out</a>
+                    {% else %}
+                        <a id="side-a" href="/accounts/login">Log in</a>
+                    {% endif %}
+                </div>
             </div>
 
             <!-- Page content wrapper-->
