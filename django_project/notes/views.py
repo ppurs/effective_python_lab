@@ -38,4 +38,4 @@ class NoteDeleteView(UserPassesTestMixin, DeleteView):
     success_url ="/notes"
 
     def test_func(self):
-        return self.request.user == self.get_object().created_by or self.request.is_superuser
+        return self.request.user == self.get_object().created_by or self.request.user.is_superuser

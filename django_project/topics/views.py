@@ -32,7 +32,7 @@ class TopicDeleteView(UserPassesTestMixin, DeleteView):
     success_url ="/topics"
 
     def test_func(self):
-        return self.request.user == self.get_object().created_by or self.request.is_superuser
+        return self.request.user == self.get_object().created_by or self.request.user.is_superuser
     
 
 def add_topic_note(request, **kwargs):
