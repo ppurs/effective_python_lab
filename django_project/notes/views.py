@@ -17,7 +17,7 @@ class NoteCreateView(LoginRequiredMixin, CreateView):
     
     def get_initial(self):
         initial = super().get_initial()
-        if self.request.session['topic']:
+        if self.request.session.get('topic', False):
             initial['topic'] = Topic.objects.get(slug=self.request.session['topic'])
             self.request.session['topic'] = None
         return initial
